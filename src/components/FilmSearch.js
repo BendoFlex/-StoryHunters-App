@@ -1,14 +1,21 @@
 import React from 'react'
-import FilmCard from './FilmCard'
+
 
 class FilmSearch extends React.Component {
+  constructor(props){
+    super(props)
+  }
+
+  
+
   render(){
     return(
-      <div id="search">
-        <label>Search Film</label>
-        <p><input type="text" name="search" id="search"/></p>
-        <p><input type="submit"/></p>
-      </div>
+      <form id="search" onSubmit={this.handleSubmit}>
+        <label>Search Film :
+          <input type="text" name="search" id="search"/>
+        </label>
+        <input type="submit" name="chercher"/>
+      </form>
     )
   }
 }
