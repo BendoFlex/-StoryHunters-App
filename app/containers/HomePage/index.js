@@ -1,4 +1,4 @@
-git /*
+/*
  * HomePage
  *
  * This is the first thing users see of our App, at the '/' route
@@ -32,6 +32,7 @@ import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+git;
 
 const key = 'home';
 
