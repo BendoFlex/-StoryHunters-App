@@ -5,45 +5,43 @@ class LoginPage extends React.Component {
     super(props)
     this.state = {
       email : "",
-      password :''
+      password :""
     }
-    this.handleTextChange = this.handleTextChange.bind(this)
-    this.handleConnexion = this.handleConnexion.bind(this)
-    
+    this.onChangeText = this.onChangeText.bind(this)
+    this.onSubmitText = this.onSubmitText.bind(this) 
   }
 
-  handleTextChange(event){
-    const text = event.target.value
-    if(event.target.name === "email"){
-      this.setState({email : text})
-    }
-    else {
-      this.setState({password : text})
-    }
-    
+  onChangeText(event){
+    let text = event.target.value
+    let name = event.target.name
+    this.setState({[name] : text})
   }
 
-  handleConnexion(event){
-    alert("captured email "+this.state.email+" and password "+this.state.password)
+   onSubmitText(event){
+     const {email, password} = this.state
+    alert("captured email "+email+" and password "+password)
     event.preventDefault();
+    this.setState({[email] : ''})
+    this.setState({[password] : ''})
+    
   }
 
 
   render() {
     return (
       <div id="loginPage">
-        <form onSubmit={this.handleConnexion}>
+        <form onSubmit={this.onSubmitText}>
           <h1>Se connecter</h1>
           <p>
             <label>
               E-mail :
-              <input type="text" name="email" value={this.state.email} onChange={this.handleTextChange} />
+              <input type="text" name="email" value={this.state.email} onChange={this.onChangeText} />
             </label>
           </p>
           <p>
             <label>
               Password :
-              <input type="password" name="password" value={this.status.password} onChange={this.handleTextChange} />
+              <input type="password" name="password" value={this.state.password} onChange={this.onChangeText}/>
             </label>
           </p>
 
