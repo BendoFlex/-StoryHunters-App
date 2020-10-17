@@ -24,33 +24,25 @@ class HomeSearch extends React.Component {
 
   renderFilms() {
     const item = [];
-
+    const urlImage ="https://via.placeholder.com/80"
     for (let i = 0; i < this.state.results; i++) {
       item.push(
-        '<div className="filmCard"><p><img src="https://www.placeholder.com/80"/></p><h2>Titre du film</h2></div>',
-      );
+      <div className="filmCard">
+        <p><img src={urlImage}/></p>
+        <h2>Titre du film</h2>
+      </div>
+      )
     }
+    return(
+      <div className="gridFilms" >
+        {item}
+      </div>
+    ) 
   }
 
   render() {
     return (
       <div id="homeSearch">
-        <div className="headerMovie">
-          <div className="logo">
-            <img src="https://www.placeholer.com/50" />
-          </div>
-
-          <h1>Movie App</h1>
-
-          <nav>
-            <ul>
-              <li>Home</li>
-              <li>Favoris</li>
-              <li>Login</li>
-            </ul>
-          </nav>
-        </div>
-
         <div className="searchForm">
           <form onSubmit={this.onSubmitText}>
             <label htmlFor="searchedText">
@@ -67,7 +59,9 @@ class HomeSearch extends React.Component {
         </div>
 
         <div className="searchResult">
-          <div className="gridFilms">{this.renderFilms()}</div>
+          <div className="wrap">
+              {this.renderFilms()}
+          </div>
           <div className="currentFilm">
             <div className="filmDesc">
               <h1>Titre</h1>
@@ -81,7 +75,7 @@ class HomeSearch extends React.Component {
             </div>
 
             <div className="imgDesc">
-              <img src="https://www.placeholder.com/300" />
+              <img src="https://via.placeholder.com/300" />
             </div>
           </div>
         </div>

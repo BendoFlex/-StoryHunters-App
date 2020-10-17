@@ -15,7 +15,7 @@ import HomeSearch from 'containers/HomeSearch/HomeSearch';
 import LoginPage from 'containers/LoginPage';
 import RegisterPage from 'containers/RegisterPage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
+import Header from 'components/CustomHeader/Header';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
