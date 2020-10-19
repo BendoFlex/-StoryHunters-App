@@ -1,4 +1,5 @@
 import React from 'react';
+import FilmDetail from '../../components/FilmDetail'
 
 class HomeSearch extends React.Component {
   constructor(props) {
@@ -78,6 +79,7 @@ class HomeSearch extends React.Component {
               <img src="https://via.placeholder.com/300" />
             </div>
           </div>
+          <FilmDetail/>
         </div>
       </div>
     );

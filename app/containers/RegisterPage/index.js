@@ -24,12 +24,14 @@ class RegisterPage extends React.Component {
 
   handleSubmitChange(event){
     const infoState = ['name','surname','age','email', 'password','passwordConf']
+    let hash
     if(this.state.password === this.state.passwordConf){
       for (let i = 0; i < infoState.length; i++){
         let info = infoState[i]
         alert( `${info} = ${this.state[info]}`)
       }
-      //alert("mot de passe encrypted ..."+bcrypt(this.state.password) )
+      hash = bcrypt(this.state.password) 
+      coon
     }
     else{
        alert("les mots de passes sont différents : try again" )
