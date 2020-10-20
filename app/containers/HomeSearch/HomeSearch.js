@@ -1,7 +1,6 @@
 import React from 'react';
 import FilmDetail from '../../components/FilmDetail'
-import {getSearchedTextFromApi} from '../../utils/TMDB/ApiCall'
-
+import getSearchedTextFromApi from '../../utils/TMDB'
 class HomeSearch extends React.Component {
   constructor(props) {
     super(props);
@@ -20,9 +19,9 @@ class HomeSearch extends React.Component {
   }
 
   onSubmitText(event) {
-    alert(`Une recherche a été faite avec ${this.state.searchedText}`);
     event.preventDefault();
     const filmsResult = getSearchedTextFromApi(this.state.searchedText)
+    
     this.setState(
       {
         searchedText:"",
@@ -30,17 +29,18 @@ class HomeSearch extends React.Component {
         films: filmsResult
       }
     )
+    console.log(this.state.films)
   }
 
   renderFilms() {
     const item = [];
-    const urlImage ="https://via.placeholder.com/80"
-    console.log(this.state.films)
-    for (let i = 0; i < this.state.results; i++) {
+    const films = this.state.films
+    for (film in films) {
+      console.log(film)
       item.push(
-      <div className="filmCard">
-        <p><img src={urlImage}/></p>
-        <h2>Titre du film</h2>
+      <div key={film.id} className="filmCard">
+        <p><img src={film.poster_path}/></p>
+        <h2>{film.title}</h2>
       </div>
       )
     }
@@ -72,22 +72,6 @@ class HomeSearch extends React.Component {
         <div className="searchResult">
           <div className="wrap">
               {this.renderFilms()}
-          </div>
-          <div className="currentFilm">
-            <div className="filmDesc">
-              <h1>Titre</h1>
-              <p>Année</p>
-              <p>Realisateur</p>
-              <p>Acteurs principaux</p>
-              <p>
-                Description de ouf
-                izahfpajfozoajfozjpjzojdpzdzjdozajdazodjpozjdj
-              </p>
-            </div>
-
-            <div className="imgDesc">
-              <img src="https://via.placeholder.com/300" />
-            </div>
           </div>
           <FilmDetail/>
         </div>
