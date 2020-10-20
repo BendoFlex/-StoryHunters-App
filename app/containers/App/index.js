@@ -33,10 +33,10 @@ export default function App() {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - Story Hunter"
+        defaultTitle="Story Hunter with React.js"
       >
-        <meta name="description" content="A React.js Boilerplate application" />
+        <meta name="description" content="A React.js Boilerplate application to find films" />
       </Helmet>
       <Header />
       <Switch>
