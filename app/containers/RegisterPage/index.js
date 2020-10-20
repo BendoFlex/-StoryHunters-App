@@ -1,4 +1,5 @@
 import React from 'react';
+import {handleSignUp} from '../../functions/Auth'
 
 
 class RegisterPage extends React.Component {
@@ -30,8 +31,7 @@ class RegisterPage extends React.Component {
         let info = infoState[i]
         alert( `${info} = ${this.state[info]}`)
       }
-      hash = bcrypt(this.state.password) 
-      coon
+      handleSignUp(email,password)
     }
     else{
        alert("les mots de passes sont différents : try again" )

@@ -1,4 +1,5 @@
 import React from 'react';
+import {handleSignIn} from '../../functions/Auth'
 
 class LoginPage extends React.Component {
   constructor(props){
@@ -21,6 +22,7 @@ class LoginPage extends React.Component {
      const {email, password} = this.state
     alert("captured email "+email+" and password "+password)
     event.preventDefault();
+    handleSignIn(email, password)
     this.setState({[email] : ''})
     this.setState({[password] : ''})
     

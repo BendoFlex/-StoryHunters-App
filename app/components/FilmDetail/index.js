@@ -1,9 +1,21 @@
 import React from 'react'
+import styled from 'styled-components'
 
-class FilmDetail extends React.Component {
-    render(){
-        return(
+
+const CenteredElem = styled.div`
+ display:flex;
+ flex-direction:column;
+ align-items :center
+
+`;
+
+export default function FilmDetail()  {
+    return(
          <div className="film-detail">
+           <CenteredElem>
+             <div className="imgDesc">
+                <img src="https://via.placeholder.com/300" />
+             </div>
             <div className="filmDesc">
               <h1>Titre</h1>
               <p>Année</p>
@@ -15,12 +27,8 @@ class FilmDetail extends React.Component {
               </p>
             </div>
 
-            <div className="imgDesc">
-              <img src="https://via.placeholder.com/300" />
-            </div>
+            
+            </CenteredElem>
           </div>
-        )
-    }
+        ) 
 }
-
-export default FilmDetail

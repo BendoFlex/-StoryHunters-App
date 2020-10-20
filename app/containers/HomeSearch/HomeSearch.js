@@ -2,6 +2,29 @@ import React from 'react';
 import FilmDetail from '../../components/FilmDetail'
 import FilmCard from '../../components/FilmCard'
 import getSearchedTextFromApi from '../../utils/TMDB'
+import styled from 'styled-components'
+
+const CenteredElem = styled.div`
+  display:flex;
+  justify-content:center;
+`;
+
+const MainWrapper = styled.div`
+  margin : 5rem 0 5rem 0;
+`;
+
+const RowAround = Styled(CenteredElem)`
+  justify-content:space-around;
+`;
+
+const Grid = styled.div`
+  display:flex;
+  flex:1;
+  flex-wrap:wrap
+`
+
+
+
 
 class HomeSearch extends React.Component {
   constructor(props) {
@@ -38,31 +61,40 @@ class HomeSearch extends React.Component {
   render() {
     const films = this.state.films
     return(
+      <MainWrapper>
       <div id="homeSearch">
-        <div className="searchForm">
-          <form onSubmit={this._LoadFilms}>
-            <label htmlFor="searchedText">
-              Chercher un film :
-              <input
-                type="text"
-                name="searchedText"
-                value={this.state.searchedText}
-                onChange={this.onChangeText}
-              />
-            </label>
-            <input type="submit" name="Rechercher" />
-          </form>
-        </div>
+        <CenteredElem>
+          <div className="searchForm">
+            <form onSubmit={this._LoadFilms}>
+              <label htmlFor="searchedText">
+                Chercher un film :
+                <input
+                  type="text"
+                  name="searchedText"
+                  value={this.state.searchedText}
+                  onChange={this.onChangeText}
+                />
+              </label>
+              <input type="submit" name="Rechercher" />
+            </form>
+          </div>
+        </CenteredElem>
 
         <div className="searchResult">
-          <div className="wrap">
-              {films.map((film, index) => {
-                return <FilmCard key={index} film={film}/>
-              })}
-          </div>
-          <FilmDetail/>
+          <RowAround>
+              <div className="wrap-grid">
+                <Grid>
+                  {films.map((film, index) => {
+                    return <FilmCard key={index} film={film}/>
+                  })}
+                </Grid>
+              </div>
+            <FilmDetail/>
+          </RowAround>
         </div>
+
       </div>
+      </MainWrapper>
     );
   }
 }
