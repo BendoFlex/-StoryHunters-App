@@ -67,15 +67,4 @@ class HomeSearch extends React.Component {
   }
 }
 
-const data = [
-   {
-    title :"bendo the movie",
-    poster_path : "https://via.placeholder.com/100"
-   },
-  {
-    title :"bendo the movie 2",
-    poster_path : "https://via.placeholder.com/100"
-  }
-]
-
 export default HomeSearch;
