@@ -1,11 +1,13 @@
 import React from 'react';
 import FilmDetail from '../../components/FilmDetail'
+import {getSearchedTextFromApi} from '../../utils/TMDB/ApiCall'
 
 class HomeSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       searchedText: '',
+      lastQuery :'',
       films: [],
       results: 20,
     };
@@ -20,12 +22,20 @@ class HomeSearch extends React.Component {
   onSubmitText(event) {
     alert(`Une recherche a été faite avec ${this.state.searchedText}`);
     event.preventDefault();
-    this.setState({searchedText:""})
+    const filmsResult = getSearchedTextFromApi(this.state.searchedText)
+    this.setState(
+      {
+        searchedText:"",
+        lastQuery:this.state.searchedText,
+        films: filmsResult
+      }
+    )
   }
 
   renderFilms() {
     const item = [];
     const urlImage ="https://via.placeholder.com/80"
+    console.log(this.state.films)
     for (let i = 0; i < this.state.results; i++) {
       item.push(
       <div className="filmCard">
