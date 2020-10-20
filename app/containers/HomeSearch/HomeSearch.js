@@ -1,6 +1,8 @@
 import React from 'react';
 import FilmDetail from '../../components/FilmDetail'
+import FilmCard from '../../components/FilmCard'
 import getSearchedTextFromApi from '../../utils/TMDB'
+
 class HomeSearch extends React.Component {
   constructor(props) {
     super(props);
@@ -11,51 +13,34 @@ class HomeSearch extends React.Component {
       results: 20,
     };
     this.onChangeText = this.onChangeText.bind(this);
-    this.onSubmitText = this.onSubmitText.bind(this);
+    this._LoadFilms = this._LoadFilms.bind(this);
   }
 
   onChangeText(event) {
     this.setState({ searchedText: event.target.value });
   }
 
-  onSubmitText(event) {
+  _LoadFilms(event) {
     event.preventDefault();
-    const filmsResult = getSearchedTextFromApi(this.state.searchedText)
-    
-    this.setState(
-      {
+    getSearchedTextFromApi(this.state.searchedText).then(data => {
+      this.setState({
         searchedText:"",
         lastQuery:this.state.searchedText,
-        films: filmsResult
-      }
-    )
+        films: data.results
+      })
+    })
     console.log(this.state.films)
   }
 
-  renderFilms() {
-    const item = [];
-    const films = this.state.films
-    for (film in films) {
-      console.log(film)
-      item.push(
-      <div key={film.id} className="filmCard">
-        <p><img src={film.poster_path}/></p>
-        <h2>{film.title}</h2>
-      </div>
-      )
-    }
-    return(
-      <div className="gridFilms" >
-        {item}
-      </div>
-    ) 
-  }
+
+
 
   render() {
-    return (
+    const films = this.state.films
+    return(
       <div id="homeSearch">
         <div className="searchForm">
-          <form onSubmit={this.onSubmitText}>
+          <form onSubmit={this._LoadFilms}>
             <label htmlFor="searchedText">
               Chercher un film :
               <input
@@ -71,7 +56,9 @@ class HomeSearch extends React.Component {
 
         <div className="searchResult">
           <div className="wrap">
-              {this.renderFilms()}
+              {films.map((film, index) => {
+                return <FilmCard key={index} film={film}/>
+              })}
           </div>
           <FilmDetail/>
         </div>
@@ -79,5 +66,16 @@ class HomeSearch extends React.Component {
     );
   }
 }
+
+const data = [
+   {
+    title :"bendo the movie",
+    poster_path : "https://via.placeholder.com/100"
+   },
+  {
+    title :"bendo the movie 2",
+    poster_path : "https://via.placeholder.com/100"
+  }
+]
 
 export default HomeSearch;
