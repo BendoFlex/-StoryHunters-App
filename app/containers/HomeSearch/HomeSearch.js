@@ -13,7 +13,7 @@ const MainWrapper = styled.div`
   margin : 5rem 0 5rem 0;
 `;
 
-const RowAround = Styled(CenteredElem)`
+const RowAround = styled(CenteredElem)`
   justify-content:space-around;
 `;
 
@@ -85,7 +85,7 @@ class HomeSearch extends React.Component {
               <div className="wrap-grid">
                 <Grid>
                   {films.map((film, index) => {
-                    return <FilmCard key={index} film={film}/>
+                    return <FilmCard key={index} film={film} size={200}/>
                   })}
                 </Grid>
               </div>
