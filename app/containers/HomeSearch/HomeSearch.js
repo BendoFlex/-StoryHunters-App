@@ -50,8 +50,13 @@ class HomeSearch extends React.Component {
         searchedText:"",
         lastQuery:this.state.searchedText,
         films: data.results
+      },
+      ()=>{
+        console.log("films")
+        console.log(this.state.films)
       })
     })
+    console.log("films")
     console.log(this.state.films)
   }
 
@@ -89,7 +94,6 @@ class HomeSearch extends React.Component {
                   })}
                 </Grid>
               </div>
-            <FilmDetail/>
           </RowAround>
         </div>
 

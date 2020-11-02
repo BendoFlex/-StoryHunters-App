@@ -14,11 +14,13 @@ import { Switch, Route } from 'react-router-dom';
 import HomeSearch from 'containers/HomeSearch/HomeSearch';
 import LoginPage from 'containers/LoginPage';
 import RegisterPage from 'containers/RegisterPage';
+
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/CustomHeader/Header';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
+import FilmDetail from '../../components/FilmDetail';
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
@@ -43,6 +45,7 @@ export default function App() {
         <Route exact path="/" component={HomeSearch} />
         <Route path="/login" qcomponent={LoginPage} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/film/:id" component={FilmDetail} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
