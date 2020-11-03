@@ -1,5 +1,6 @@
-const API_KEY="29ba92f8951f0add3fb6b95ee1a50a2f"
-const DEFAULT_LANG="en"
+export {API_KEY,DEFAULT_LANG} from '../../config'
+//const API_KEY="29ba92f8951f0add3fb6b95ee1a50a2f"
+const DEFAULT_LANG=process.env.DEFAULT_LANG
 
 //default export result in a import without {} 
 export default function getSearchedTextFromApi (text) {

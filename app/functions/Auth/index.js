@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth"; //works ? yes
+import {API_KEY,APP_ID} from './secret'
 
 function handleSignUp (email, password) {
 
