@@ -1,8 +1,11 @@
-const firebase = require("firebase/auth")
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth"; //works ? yes
 
 function handleSignUp (email, password) {
 
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(error => {
+  return firebase.auth().createUserWithEmailAndPassword(email, password)
+    /*.catch(error => {
     let errorCode = error.code;
     let errorMessage = error.message;
     console.log(error.message+" with code :"+error.code)
@@ -13,23 +16,26 @@ function handleSignUp (email, password) {
       alert(errorMessage);
     }
     console.log(error);
-  })
+  })*/
 }
 
 function handleSignIn (email, password) {
 
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
-    let errorCode = error.code;
-    let errorMessage = error.message;
-  
-    if (errorCode === 'auth/wrong-password') {
-      alert('Wrong password.');
-    } else {
-      alert(errorMessage);
-    }
-    console.log(error);
-    //document.getElementById('quickstart-sign-in').disabled = false;
-  })
+   return firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((resp) => console.log(resp))
+        .catch((err) => console.log(err))
+    /*.catch(error => {
+      let errorCode = error.code;
+      let errorMessage = error.message;
+    
+      if (errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+      //document.getElementById('quickstart-sign-in').disabled = false;
+  })*/
 }
 
 

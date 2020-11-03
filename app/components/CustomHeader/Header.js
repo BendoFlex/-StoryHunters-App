@@ -1,5 +1,7 @@
 import React from 'react';
 import LayoutSpaceAround from './LayoutSpaceAround';
+import {handleSignIn}  from '../../functions/Auth'
+
 
 
 export default class Header extends React.Component  {
@@ -7,13 +9,17 @@ export default class Header extends React.Component  {
     super(props)
     this.state ={
       toggle : false,
-      userName : 'Login'
+      userName : "Login"
     }
+    this.authentification=this.authentification.bind(this)
+
   }
-  authentification(event){
-    console.log("authentification")
-    console.log(event.target.value)
+
+  authentification(){
+    console.log(handleSignIn("joanzaf@lilo.org","gyuguyg"))// works!
   }
+ 
+  
 
   render(){
         return (
@@ -31,8 +37,8 @@ export default class Header extends React.Component  {
                     <LayoutSpaceAround>
                       <a href="/"><li>Home</li></a>
                       <a href="/favorites"></a><li>Favoris</li>
-                    <a href="/login" onClick={this.authentification}><li>{this.state.userName}</li></a>
-                      </LayoutSpaceAround>
+                      <li><button onClick={this.authentification} value="login">{this.state.userName}</button></li>
+                    </LayoutSpaceAround>
                   </ul>
                 </nav>
             </LayoutSpaceAround>
