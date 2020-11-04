@@ -17,6 +17,10 @@ import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
+import firebase from "firebase/app"
+import "firebase/auth"
+import {API_KEY,APP_ID} from './functions/Auth/secret'
+
 // Import root app
 import App from 'containers/App';
 
@@ -40,6 +44,20 @@ const openSansObserver = new FontFaceObserver('Open Sans', {});
 openSansObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
+
+const firebaseconfig = {
+  apiKey : API_KEY,
+  authDomain: "story-hunters-f22e6.firebaseapp.com",
+  databaseURL: "https://story-hunters-f22e6.firebaseio.com",
+  projectId: "story-hunters-f22e6",
+  storageBucket: "story-hunters-f22e6.appspot.com",
+  messagingSenderId: "64605743753",
+  appId: "1:64605743753:web:570e61115906e7d488f458",
+  measurementId: "G-826VG6K2CM"
+}
+
+firebase.initializeApp(firebaseconfig)
+
 
 // Create redux store with history
 const initialState = {};
