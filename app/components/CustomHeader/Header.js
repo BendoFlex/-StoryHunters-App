@@ -18,7 +18,8 @@ export default class Header extends React.Component  {
   authentification(){
     googleSignIn()
         .then( (data) => {
-                this.setState({userName : data.user})
+                console.log(data)
+                this.setState({userName : data.user.displayName})
         })
         .catch((error)=> console.log(error.message))// works!
   }
