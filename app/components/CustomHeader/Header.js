@@ -1,6 +1,6 @@
 import React from 'react';
 import LayoutSpaceAround from './LayoutSpaceAround';
-import {handleSignIn}  from '../../functions/Auth'
+import {googleSignIn}  from '../../functions/Auth'
 
 
 
@@ -16,7 +16,7 @@ export default class Header extends React.Component  {
   }
 
   authentification(){
-    console.log(handleSignIn("joanzaf@lilo.org","gyuguyg"))// works!
+    googleSignIn();// works!
   }
  
   
